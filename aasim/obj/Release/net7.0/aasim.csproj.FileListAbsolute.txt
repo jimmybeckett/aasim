@@ -1,0 +1,15 @@
+C:\Users\jimmy\source\repos\aasim\aasim\bin\Release\net7.0\aasim.exe
+C:\Users\jimmy\source\repos\aasim\aasim\bin\Release\net7.0\aasim.deps.json
+C:\Users\jimmy\source\repos\aasim\aasim\bin\Release\net7.0\aasim.runtimeconfig.json
+C:\Users\jimmy\source\repos\aasim\aasim\bin\Release\net7.0\aasim.dll
+C:\Users\jimmy\source\repos\aasim\aasim\bin\Release\net7.0\aasim.pdb
+C:\Users\jimmy\source\repos\aasim\aasim\obj\Release\net7.0\aasim.csproj.AssemblyReference.cache
+C:\Users\jimmy\source\repos\aasim\aasim\obj\Release\net7.0\aasim.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jimmy\source\repos\aasim\aasim\obj\Release\net7.0\aasim.AssemblyInfoInputs.cache
+C:\Users\jimmy\source\repos\aasim\aasim\obj\Release\net7.0\aasim.AssemblyInfo.cs
+C:\Users\jimmy\source\repos\aasim\aasim\obj\Release\net7.0\aasim.csproj.CoreCompileInputs.cache
+C:\Users\jimmy\source\repos\aasim\aasim\obj\Release\net7.0\aasim.dll
+C:\Users\jimmy\source\repos\aasim\aasim\obj\Release\net7.0\refint\aasim.dll
+C:\Users\jimmy\source\repos\aasim\aasim\obj\Release\net7.0\aasim.pdb
+C:\Users\jimmy\source\repos\aasim\aasim\obj\Release\net7.0\aasim.genruntimeconfig.cache
+C:\Users\jimmy\source\repos\aasim\aasim\obj\Release\net7.0\ref\aasim.dll
