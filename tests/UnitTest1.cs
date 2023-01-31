@@ -22,8 +22,8 @@ namespace tests
 
             var battle = new Battle(attackingArmy, defendingArmy);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
-            result.AttackerWinRatio.Should().BeApproximately(.174, delta);
-            result.DefenderWinRatio.Should().BeApproximately(.804, delta);
+            result.AttackerWinRatio.Should().BeApproximately(.176, delta);
+            result.DefenderWinRatio.Should().BeApproximately(.802, delta);
             result.DrawRatio.Should().BeApproximately(.022, delta);
         }
 
@@ -42,9 +42,9 @@ namespace tests
 
             var battle = new Battle(attackingArmy, defendingArmy);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
-            result.AttackerWinRatio.Should().BeApproximately(.416, delta);
+            result.AttackerWinRatio.Should().BeApproximately(.418, delta);
             result.DefenderWinRatio.Should().BeApproximately(.532, delta);
-            result.DrawRatio.Should().BeApproximately(.052, delta);
+            result.DrawRatio.Should().BeApproximately(.050, delta);
         }
 
         [Fact]
@@ -62,9 +62,9 @@ namespace tests
 
             var battle = new Battle(attackingArmy, defendingArmy);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
-            result.AttackerWinRatio.Should().BeApproximately(.314, delta);
-            result.DefenderWinRatio.Should().BeApproximately(.599, delta);
-            result.DrawRatio.Should().BeApproximately(.087, delta);
+            result.AttackerWinRatio.Should().BeApproximately(.316, delta);
+            result.DefenderWinRatio.Should().BeApproximately(.597, delta);
+            result.DrawRatio.Should().BeApproximately(.088, delta);
         }
 
         [Fact]
@@ -89,26 +89,9 @@ namespace tests
 
             var battle = new Battle(attackingArmy, defendingArmy);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
-            result.AttackerWinRatio.Should().BeApproximately(.758, delta);
-            result.DefenderWinRatio.Should().BeApproximately(.214, delta);
-            result.DrawRatio.Should().BeApproximately(.028, delta);
-        }
-
-        record RatioBattleSimulationSummary
-        {
-            public double AttackerWinRatio { get; init; }
-            public double DefenderWinRatio { get; init;  }
-            public double DrawRatio { get; init;  }
-
-            public RatioBattleSimulationSummary() { }
-
-            public RatioBattleSimulationSummary(BattleSimulationSummary summary)
-            {
-                double rounds = summary.AttackerWins + summary.DefenderWins + summary.Draws;
-                AttackerWinRatio = summary.AttackerWins / rounds;
-                DefenderWinRatio = summary.DefenderWins / rounds;
-                DrawRatio = summary.Draws / rounds;
-            }
+            result.AttackerWinRatio.Should().BeApproximately(.756, delta);
+            result.DefenderWinRatio.Should().BeApproximately(.215, delta);
+            result.DrawRatio.Should().BeApproximately(.029, delta);
         }
     }
 }

@@ -51,11 +51,4 @@ namespace aasim
     {
         AttackersWin, DefendersWin, Draw
     }
-
-    public record BattleSimulationSummary
-    {
-        public int AttackerWins { get; init; }
-        public int DefenderWins { get; init; }
-        public int Draws { get; init; }
-    }
 }
