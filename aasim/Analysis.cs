@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace aasim
 {
-    internal class Analysis
+    public class Analysis
     {
         public static BattleSimulationSummary Simulate(Battle battle, int rounds)
         {

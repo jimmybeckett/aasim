@@ -1,6 +1,6 @@
 ﻿namespace aasim
 {
-    internal abstract class Unit
+    public abstract class Unit
     {
         private static readonly Random _random = new();
 

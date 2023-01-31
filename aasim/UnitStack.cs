@@ -1,6 +1,6 @@
 ﻿namespace aasim
 {
-    internal interface IUnitStack : ICloneable
+    public interface IUnitStack : ICloneable
     {
         int NumUnits { get; set; }
         int SurplusHealth { get; set; }

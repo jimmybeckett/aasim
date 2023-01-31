@@ -1,16 +1,16 @@
 ﻿namespace aasim
 {
-    internal class Tank : Unit
+    public class Tank : Unit
     {
         public Tank() : base(3, 3, 1, 6) { }
     }
 
-    internal class Artillery : Unit
+    public class Artillery : Unit
     {
         public Artillery() : base(2, 2, 1, 4) { }
     }
 
-    internal class Infantry : Unit
+    public class Infantry : Unit
     {
         public Infantry() : base(1, 2, 1, 3) { }
 

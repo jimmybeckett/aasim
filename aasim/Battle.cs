@@ -2,7 +2,7 @@
 
 namespace aasim
 {
-    internal class Battle : ICloneable
+    public class Battle : ICloneable
     {
         public Army Attackers { get; init; }
         public Army Defenders { get; init; }
@@ -47,12 +47,12 @@ namespace aasim
             => new Battle((Army) Attackers.Clone(), (Army) Defenders.Clone());
     }
 
-    enum BattleResult
+    public enum BattleResult
     {
         AttackersWin, DefendersWin, Draw
     }
 
-    record BattleSimulationSummary
+    public record BattleSimulationSummary
     {
         public int AttackerWins { get; init; }
         public int DefenderWins { get; init; }

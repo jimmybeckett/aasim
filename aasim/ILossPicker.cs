@@ -1,6 +1,6 @@
 ﻿namespace aasim
 {
-    internal interface ILossPicker
+    public interface ILossPicker
     {
         Type? PickLossType(Dictionary<Type, IUnitStack> units);
     }

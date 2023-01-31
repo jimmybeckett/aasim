@@ -1,6 +1,6 @@
 ﻿namespace aasim
 {
-    internal class Army : ICloneable
+    public class Army : ICloneable
     {
         private Dictionary<Type, IUnitStack> _units = new();
         private readonly ILossPicker _lossPicker;
