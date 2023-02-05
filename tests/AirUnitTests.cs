@@ -8,16 +8,16 @@
         [Fact]
         public void Fighters_Only()
         {
-            var attackingArmy = new Army(new SimpleLossPicker());
-            attackingArmy.AddUnit<Fighter>();
-            attackingArmy.AddUnit<Fighter>();
-            attackingArmy.AddUnit<Fighter>();
+            var attackingForce = new Force(new SimpleLossPicker());
+            attackingForce.AddUnit<Fighter>();
+            attackingForce.AddUnit<Fighter>();
+            attackingForce.AddUnit<Fighter>();
 
-            var defendingArmy = new Army(new SimpleLossPicker());
-            defendingArmy.AddUnit<Fighter>();
-            defendingArmy.AddUnit<Fighter>();
+            var defendingForce = new Force(new SimpleLossPicker());
+            defendingForce.AddUnit<Fighter>();
+            defendingForce.AddUnit<Fighter>();
 
-            var battle = new Battle(attackingArmy, defendingArmy);
+            var battle = new Battle(attackingForce, defendingForce);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
             result.AttackerWinRatio.Should().BeApproximately(.743, delta);
             result.DefenderWinRatio.Should().BeApproximately(.164, delta);
@@ -27,18 +27,18 @@
         [Fact]
         public void TacticalBomber_Tank()
         {
-            var attackingArmy = new Army(new SimpleLossPicker());
-            attackingArmy.AddUnit<Tank>();
-            attackingArmy.AddUnit<Tank>();
-            attackingArmy.AddUnit<TacticalBomber>();
-            attackingArmy.AddUnit<TacticalBomber>();
+            var attackingForce = new Force(new SimpleLossPicker());
+            attackingForce.AddUnit<Tank>();
+            attackingForce.AddUnit<Tank>();
+            attackingForce.AddUnit<TacticalBomber>();
+            attackingForce.AddUnit<TacticalBomber>();
 
-            var defendingArmy = new Army(new SimpleLossPicker());
-            defendingArmy.AddUnit<Infantry>();
-            defendingArmy.AddUnit<Infantry>();
-            defendingArmy.AddUnit<Infantry>();
+            var defendingForce = new Force(new SimpleLossPicker());
+            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>();
 
-            var battle = new Battle(attackingArmy, defendingArmy);
+            var battle = new Battle(attackingForce, defendingForce);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
             result.AttackerWinRatio.Should().BeApproximately(.957, delta);
             result.DefenderWinRatio.Should().BeApproximately(.030, delta);
@@ -48,16 +48,16 @@
         [Fact]
         public void TacticalBomber_Fighter()
         {
-            var attackingArmy = new Army(new SimpleLossPicker());
-            attackingArmy.AddUnit<TacticalBomber>();
-            attackingArmy.AddUnit<Fighter>();
+            var attackingForce = new Force(new SimpleLossPicker());
+            attackingForce.AddUnit<TacticalBomber>();
+            attackingForce.AddUnit<Fighter>();
 
-            var defendingArmy = new Army(new SimpleLossPicker());
-            defendingArmy.AddUnit<Infantry>();
-            defendingArmy.AddUnit<Infantry>();
-            defendingArmy.AddUnit<TacticalBomber>();
+            var defendingForce = new Force(new SimpleLossPicker());
+            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<TacticalBomber>();
 
-            var battle = new Battle(attackingArmy, defendingArmy);
+            var battle = new Battle(attackingForce, defendingForce);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
             result.AttackerWinRatio.Should().BeApproximately(.201, delta);
             result.DefenderWinRatio.Should().BeApproximately(.711, delta);
@@ -67,16 +67,16 @@
         [Fact]
         public void StrategicBomber_Fighter()
         {
-            var attackingArmy = new Army(new SimpleLossPicker());
-            attackingArmy.AddUnit<StrategicBomber>();
-            attackingArmy.AddUnit<Fighter>();
+            var attackingForce = new Force(new SimpleLossPicker());
+            attackingForce.AddUnit<StrategicBomber>();
+            attackingForce.AddUnit<Fighter>();
 
-            var defendingArmy = new Army(new SimpleLossPicker());
-            defendingArmy.AddUnit<Infantry>();
-            defendingArmy.AddUnit<Infantry>();
-            defendingArmy.AddUnit<TacticalBomber>();
+            var defendingForce = new Force(new SimpleLossPicker());
+            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<TacticalBomber>();
 
-            var battle = new Battle(attackingArmy, defendingArmy);
+            var battle = new Battle(attackingForce, defendingForce);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
             result.AttackerWinRatio.Should().BeApproximately(.167, delta);
             result.DefenderWinRatio.Should().BeApproximately(.757, delta);
@@ -86,20 +86,20 @@
         [Fact]
         public void AirBattle()
         {
-            var attackingArmy = new Army(new SimpleLossPicker());
-            attackingArmy.AddUnit<Fighter>();
-            attackingArmy.AddUnit<Fighter>();
-            attackingArmy.AddUnit<TacticalBomber>();
-            attackingArmy.AddUnit<StrategicBomber>();
+            var attackingForce = new Force(new SimpleLossPicker());
+            attackingForce.AddUnit<Fighter>();
+            attackingForce.AddUnit<Fighter>();
+            attackingForce.AddUnit<TacticalBomber>();
+            attackingForce.AddUnit<StrategicBomber>();
 
-            var defendingArmy = new Army(new SimpleLossPicker());
-            defendingArmy.AddUnit<Fighter>();
-            defendingArmy.AddUnit<TacticalBomber>();
-            defendingArmy.AddUnit<TacticalBomber>();
-            defendingArmy.AddUnit<StrategicBomber>();
-            defendingArmy.AddUnit<StrategicBomber>();
+            var defendingForce = new Force(new SimpleLossPicker());
+            defendingForce.AddUnit<Fighter>();
+            defendingForce.AddUnit<TacticalBomber>();
+            defendingForce.AddUnit<TacticalBomber>();
+            defendingForce.AddUnit<StrategicBomber>();
+            defendingForce.AddUnit<StrategicBomber>();
 
-            var battle = new Battle(attackingArmy, defendingArmy);
+            var battle = new Battle(attackingForce, defendingForce);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
             result.AttackerWinRatio.Should().BeApproximately(.170, delta);
             result.DefenderWinRatio.Should().BeApproximately(.784, delta);

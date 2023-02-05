@@ -4,14 +4,14 @@ namespace aasim
 {
     public class Battle
     {
-        public Army Attackers { get; init; }
-        public Army Defenders { get; init; }
+        public Force Attackers { get; init; }
+        public Force Defenders { get; init; }
 
-        public Battle(Army attackers, Army defenders)
+        public Battle(Force attackers, Force defenders)
             => (Attackers, Defenders) = (attackers, defenders);
 
         public Battle(Battle other)
-            => (Attackers, Defenders) = (new Army(other.Attackers), new Army(other.Defenders));
+            => (Attackers, Defenders) = (new Force(other.Attackers), new Force(other.Defenders));
 
         public BattleResult Resolve()
         {

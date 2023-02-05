@@ -6,33 +6,33 @@ namespace aasim
     {
         static void Main(string[] args)
         {
-            var attackingArmy = new Army(new SimpleLossPicker());
-            attackingArmy.AddUnit<Infantry>();
-            attackingArmy.AddUnit<Infantry>();
-            attackingArmy.AddUnit<Infantry>();
-            attackingArmy.AddUnit<Artillery>();
-            attackingArmy.AddUnit<Artillery>();
-            attackingArmy.AddUnit<Tank>();
-            attackingArmy.AddUnit<Tank>();
-            attackingArmy.AddUnit<Fighter>();
-            attackingArmy.AddUnit<Fighter>();
-            attackingArmy.AddUnit<TacticalBomber>();
-            attackingArmy.AddUnit<StrategicBomber>();
+            var attackingForce = new Force(new SimpleLossPicker());
+            attackingForce.AddUnit<Infantry>();
+            attackingForce.AddUnit<Infantry>();
+            attackingForce.AddUnit<Infantry>();
+            attackingForce.AddUnit<Artillery>();
+            attackingForce.AddUnit<Artillery>();
+            attackingForce.AddUnit<Tank>();
+            attackingForce.AddUnit<Tank>();
+            attackingForce.AddUnit<Fighter>();
+            attackingForce.AddUnit<Fighter>();
+            attackingForce.AddUnit<TacticalBomber>();
+            attackingForce.AddUnit<StrategicBomber>();
 
-            var defendingArmy = new Army(new SimpleLossPicker());
-            defendingArmy.AddUnit<Infantry>();
-            defendingArmy.AddUnit<Infantry>();
-            defendingArmy.AddUnit<Infantry>();
-            defendingArmy.AddUnit<Infantry>();
-            defendingArmy.AddUnit<Artillery>();
-            defendingArmy.AddUnit<Tank>();
-            defendingArmy.AddUnit<Fighter>();
-            defendingArmy.AddUnit<TacticalBomber>();
-            defendingArmy.AddUnit<TacticalBomber>();
-            defendingArmy.AddUnit<StrategicBomber>();
-            defendingArmy.AddUnit<StrategicBomber>();
+            var defendingForce = new Force(new SimpleLossPicker());
+            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Artillery>();
+            defendingForce.AddUnit<Tank>();
+            defendingForce.AddUnit<Fighter>();
+            defendingForce.AddUnit<TacticalBomber>();
+            defendingForce.AddUnit<TacticalBomber>();
+            defendingForce.AddUnit<StrategicBomber>();
+            defendingForce.AddUnit<StrategicBomber>();
 
-            var battle = new Battle(attackingArmy, defendingArmy);
+            var battle = new Battle(attackingForce, defendingForce);
 
             var stopwatch = Stopwatch.StartNew();
 

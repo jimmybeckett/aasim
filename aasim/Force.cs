@@ -1,14 +1,14 @@
 ﻿namespace aasim
 {
-    public class Army
+    public class Force
     {
         private Dictionary<Type, IUnitStack> _units = new();
         private readonly ILossPicker _lossPicker;
 
-        public Army(ILossPicker lossPicker)
+        public Force(ILossPicker lossPicker)
              => _lossPicker = lossPicker;
 
-        public Army(Army other) => (_lossPicker, _units) 
+        public Force(Force other) => (_lossPicker, _units) 
             = (other._lossPicker, other._units.ToDictionary(entry => entry.Key, entry => entry.Value.Clone()));
 
         public void AddUnit<T>() where T : Unit, new()
