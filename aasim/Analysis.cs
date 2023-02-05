@@ -9,33 +9,9 @@ namespace aasim
     public class Analysis
     {
         public static BattleSimulationSummary Simulate(Battle battle, int rounds)
-        {
-            var attackerWins = 0;
-            var defenderWins = 0;
-            var draws = 0;
-            for (int i = 0; i < rounds; i++)
-            {
-                switch (((Battle) battle.Clone()).Resolve())
-                {
-                    case BattleResult.AttackersWin:
-                        attackerWins++;
-                        break;
-                    case BattleResult.DefendersWin:
-                        defenderWins++;
-                        break;
-                    case BattleResult.Draw:
-                        draws++;
-                        break;
-                    default:
-                        throw new InvalidOperationException();
-                }
-            }
-            return new BattleSimulationSummary()
-            {
-                AttackerWins = attackerWins,
-                DefenderWins = defenderWins,
-                Draws = draws
-            };
-        }
+            => Enumerable.Range(0, rounds)
+            .AsParallel()
+            .Select(_ => ((Battle)battle.Clone()).Resolve())
+            .Aggregate(new BattleSimulationSummary(), (summary, result) => summary + result);
     }
 }
