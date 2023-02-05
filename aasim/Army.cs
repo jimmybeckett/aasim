@@ -1,12 +1,15 @@
 ﻿namespace aasim
 {
-    public class Army : ICloneable
+    public class Army
     {
         private Dictionary<Type, IUnitStack> _units = new();
         private readonly ILossPicker _lossPicker;
 
         public Army(ILossPicker lossPicker)
              => _lossPicker = lossPicker;
+
+        public Army(Army other) => (_lossPicker, _units) 
+            = (other._lossPicker, other._units.ToDictionary(entry => entry.Key, entry => entry.Value.Clone()));
 
         public void AddUnit<T>() where T : Unit, new()
         {
@@ -75,10 +78,5 @@
                 }
             }
         }
-
-        public object Clone() => new Army(_lossPicker)
-        {
-            _units = _units.ToDictionary(entry => entry.Key, entry => (IUnitStack) entry.Value.Clone())
-        };
     }
 }

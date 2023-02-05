@@ -1,6 +1,8 @@
-﻿namespace aasim
+﻿using System.Runtime.CompilerServices;
+
+namespace aasim
 {
-    public interface IUnitStack : ICloneable
+    public interface IUnitStack
     {
         int NumUnits { get; set; }
         int SurplusHealth { get; set; }
@@ -8,6 +10,7 @@
         void AddUnit();
         int SimulateAttack(Battle context);
         int SimulateDefense(Battle context);
+        public IUnitStack Clone();
     }
 
     internal class UnitStack<T> : IUnitStack where T : Unit, new()
@@ -32,10 +35,6 @@
             .Where(i => WorkerUnit.Defend(context, i))
             .Count();
 
-        public object Clone() => new UnitStack<T>()
-        {
-            NumUnits = NumUnits,
-            SurplusHealth = SurplusHealth
-        };
+        public IUnitStack Clone() => (IUnitStack) MemberwiseClone();
     }
 }

@@ -2,13 +2,16 @@
 
 namespace aasim
 {
-    public class Battle : ICloneable
+    public class Battle
     {
         public Army Attackers { get; init; }
         public Army Defenders { get; init; }
 
         public Battle(Army attackers, Army defenders)
             => (Attackers, Defenders) = (attackers, defenders);
+
+        public Battle(Battle other)
+            => (Attackers, Defenders) = (new Army(other.Attackers), new Army(other.Defenders));
 
         public BattleResult Resolve()
         {
@@ -42,9 +45,6 @@ namespace aasim
             }
             return null;
         }
-
-        public object Clone() 
-            => new Battle((Army) Attackers.Clone(), (Army) Defenders.Clone());
     }
 
     public enum BattleResult
