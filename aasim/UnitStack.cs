@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace aasim
+﻿namespace aasim
 {
     public interface IUnitStack
     {
