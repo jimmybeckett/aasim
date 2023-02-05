@@ -2,7 +2,7 @@ using aasim;
 
 namespace tests
 {
-    public class UnitTest1
+    public class LandUnitTests
     {
         public const int rounds = 10000;
         public const double delta = 0.02;
@@ -68,7 +68,7 @@ namespace tests
         }
 
         [Fact]
-        public void Infantry_Artillery_Tank()
+        public void LandBattle()
         {
             var attackingArmy = new Army(new SimpleLossPicker());
             attackingArmy.AddUnit<Infantry>();
