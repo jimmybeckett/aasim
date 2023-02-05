@@ -43,13 +43,7 @@
         }
 
         public int Count<T>() where T : Unit, new()
-        {
-            if (_units.TryGetValue(typeof(T), out var unitStack))
-            {
-                return unitStack.NumUnits;
-            }
-            return 0;
-        }
+            => _units.TryGetValue(typeof(T), out var unitStack) ? unitStack.NumUnits : 0;
 
         private void ApplyHit()
         {
