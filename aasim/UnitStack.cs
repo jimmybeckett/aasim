@@ -8,7 +8,8 @@
         void AddUnit();
         int SimulateAttack(Battle context);
         int SimulateDefense(Battle context);
-        public IUnitStack Clone();
+        public void ApplyHit();
+        public IUnitStack Duplicate();
     }
 
     internal class UnitStack<T> : IUnitStack where T : Unit, new()
@@ -24,15 +25,32 @@
         }
 
         public int SimulateAttack(Battle context)
-            => Enumerable.Range(0, NumUnits)
-            .Where(i => WorkerUnit.Attack(context, i))
-            .Count();
+            => SimulateCombat(context, WorkerUnit.Attack);
 
         public int SimulateDefense(Battle context)
+            => SimulateCombat(context, WorkerUnit.Defend);
+
+        private int SimulateCombat(Battle context, Func<Battle, int, bool> simulateHit)
             => Enumerable.Range(0, NumUnits)
-            .Where(i => WorkerUnit.Defend(context, i))
+            .Where(i => simulateHit(context, i))
             .Count();
 
-        public IUnitStack Clone() => (IUnitStack) MemberwiseClone();
+        public void ApplyHit()
+        {
+            if (SurplusHealth > 0)
+            {
+                SurplusHealth--;
+            }
+            else if (NumUnits > 0)
+            {
+                NumUnits--;
+            }
+            else
+            {
+                throw new InvalidOperationException();
+            }
+        }
+
+        public IUnitStack Duplicate() => (IUnitStack) MemberwiseClone();
     }
 }

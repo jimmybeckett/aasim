@@ -16,10 +16,9 @@
 
         public override bool Attack(Battle context, int i)
         {
-            var numArtillery = context.Attackers.Count<Artillery>();
-            if (i < numArtillery)
+            if (i < context.Attackers.Count<Artillery>())
             {
-                return Roll() <= AttackingCombatScore + 1;
+                return SimulateD6Lte(AttackingCombatScore + 1);
             }
             return base.Attack(context, i);
         }

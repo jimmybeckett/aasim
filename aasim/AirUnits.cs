@@ -11,11 +11,9 @@
 
         public override bool Attack(Battle context, int i)
         {
-            var numFighters = context.Attackers.Count<Fighter>();
-            var numTanks = context.Attackers.Count<Tank>();
-            if (i < numFighters + numTanks)
+            if (i < context.Attackers.Count<Fighter>() + context.Attackers.Count<Tank>())
             {
-                return Roll() <= AttackingCombatScore + 1;
+                return SimulateD6Lte(AttackingCombatScore + 1);
             }
             return base.Attack(context, i);
         }

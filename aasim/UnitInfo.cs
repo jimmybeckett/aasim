@@ -27,7 +27,6 @@
                 DefenderWins = summary.DefenderWins + (result is BattleResult.DefendersWin ? 1 : 0),
                 Draws = summary.Draws + (result is BattleResult.Draw ? 1 : 0),
             };
-
     }
 
     public record RatioBattleSimulationSummary

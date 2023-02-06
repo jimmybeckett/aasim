@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace aasim
+﻿namespace aasim
 {
     public class Battle
     {
@@ -27,19 +25,22 @@ namespace aasim
         {
             var attackerHits = Attackers.SimulateAttack(this);
             var defenderHits = Defenders.SimulateDefense(this);
-
             Attackers.ApplyHits(defenderHits);
             Defenders.ApplyHits(attackerHits);
+            return Result();
+        }
 
-            if (Attackers.IsDestroyed() && Defenders.IsDestroyed())
+        public BattleResult? Result()
+        {
+            if (Attackers.IsDefeated() && Defenders.IsDefeated())
             {
                 return BattleResult.Draw;
             }
-            if (Attackers.IsDestroyed())
+            if (Attackers.IsDefeated())
             {
                 return BattleResult.DefendersWin;
             }
-            if (Defenders.IsDestroyed())
+            if (Defenders.IsDefeated())
             {
                 return BattleResult.AttackersWin;
             }

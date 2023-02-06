@@ -13,15 +13,15 @@
         public int Cost { get; init; }
 
         public virtual bool Attack(Battle context, int i) 
-            => Roll() <= AttackingCombatScore;
+            => SimulateD6Lte(AttackingCombatScore);
 
-        public virtual bool Defend(Battle context, int i) 
-            => Roll() <= DefendingCombatScore;
+        public virtual bool Defend(Battle context, int i)
+            => SimulateD6Lte(DefendingCombatScore);
 
         public virtual bool CanRetreat(bool isAggressor) => isAggressor;
 
         public override string ToString() => GetType().Name;
         
-        protected static int Roll() => 1 + _random.Next(6);
+        protected static bool SimulateD6Lte(int n) => 1 + _random.Next(6) <= n;
     }
 }
