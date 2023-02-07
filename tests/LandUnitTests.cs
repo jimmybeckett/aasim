@@ -111,7 +111,7 @@ namespace tests
             var attackingForce = new Force(new SimpleLossPicker());
             attackingForce.AddUnit<Infantry>();
             attackingForce.AddUnit<Infantry>();
-            attackingForce.AddUnit<Infantry>();
+            attackingForce.AddUnit<MechInfantry>();
             attackingForce.AddUnit<Artillery>();
             attackingForce.AddUnit<Artillery>();
             attackingForce.AddUnit<Tank>();
@@ -120,8 +120,8 @@ namespace tests
             var defendingForce = new Force(new SimpleLossPicker());
             defendingForce.AddUnit<Infantry>();
             defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<MechInfantry>();
+            defendingForce.AddUnit<MechInfantry>();
             defendingForce.AddUnit<Artillery>();
             defendingForce.AddUnit<Tank>();
 
