@@ -23,4 +23,18 @@
             return base.Attack(context, i);
         }
     }
+
+    public class MechInfantry : Unit
+    {
+        public MechInfantry() : base(1, 2, 1, 4) { }
+
+        public override bool Attack(Battle context, int i)
+        {
+            if (i < context.Attackers.Count<Artillery>())
+            {
+                return SimulateD6Lte(AttackingCombatScore + 1);
+            }
+            return base.Attack(context, i);
+        }
+    }
 }

@@ -46,6 +46,46 @@ namespace tests
         }
 
         [Fact]
+        public void Infantry_MechInfantry()
+        {
+            var attackingForce = new Force(new SimpleLossPicker());
+            attackingForce.AddUnit<Infantry>();
+            attackingForce.AddUnit<MechInfantry>();
+            attackingForce.AddUnit<MechInfantry>();
+
+            var defendingForce = new Force(new SimpleLossPicker());
+            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<MechInfantry>();
+
+            var battle = new Battle(attackingForce, defendingForce);
+            var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
+            result.AttackerWinRatio.Should().BeApproximately(.176, delta);
+            result.DefenderWinRatio.Should().BeApproximately(.802, delta);
+            result.DrawRatio.Should().BeApproximately(.022, delta);
+        }
+
+        [Fact]
+        public void MechInfantry_Artillery()
+        {
+            var attackingForce = new Force(new SimpleLossPicker());
+            attackingForce.AddUnit<MechInfantry>();
+            attackingForce.AddUnit<MechInfantry>();
+            attackingForce.AddUnit<Artillery>();
+
+            var defendingForce = new Force(new SimpleLossPicker());
+            defendingForce.AddUnit<MechInfantry>();
+            defendingForce.AddUnit<MechInfantry>();
+            defendingForce.AddUnit<Artillery>();
+
+            var battle = new Battle(attackingForce, defendingForce);
+            var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
+            result.AttackerWinRatio.Should().BeApproximately(.418, delta);
+            result.DefenderWinRatio.Should().BeApproximately(.532, delta);
+            result.DrawRatio.Should().BeApproximately(.050, delta);
+        }
+
+        [Fact]
         public void Infantry_Tank()
         {
             var attackingForce = new Force(new SimpleLossPicker());
