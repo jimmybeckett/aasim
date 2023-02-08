@@ -9,14 +9,10 @@ namespace tests
         public void Infantry_Only()
         {
             var attackingForce = new Force(new SimpleLossPicker());
-            attackingForce.AddUnit<Infantry>();
-            attackingForce.AddUnit<Infantry>();
-            attackingForce.AddUnit<Infantry>();
+            attackingForce.AddUnit<Infantry>(3);
 
             var defendingForce = new Force(new SimpleLossPicker());
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>(3);
 
             var battle = new Battle(attackingForce, defendingForce);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
@@ -29,13 +25,11 @@ namespace tests
         public void Infantry_Artillery()
         {
             var attackingForce = new Force(new SimpleLossPicker());
-            attackingForce.AddUnit<Infantry>();
-            attackingForce.AddUnit<Infantry>();
+            attackingForce.AddUnit<Infantry>(2);
             attackingForce.AddUnit<Artillery>();
 
             var defendingForce = new Force(new SimpleLossPicker());
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>(2);
             defendingForce.AddUnit<Artillery>();
 
             var battle = new Battle(attackingForce, defendingForce);
@@ -50,12 +44,10 @@ namespace tests
         {
             var attackingForce = new Force(new SimpleLossPicker());
             attackingForce.AddUnit<Infantry>();
-            attackingForce.AddUnit<MechInfantry>();
-            attackingForce.AddUnit<MechInfantry>();
+            attackingForce.AddUnit<MechInfantry>(2);
 
             var defendingForce = new Force(new SimpleLossPicker());
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>(2);
             defendingForce.AddUnit<MechInfantry>();
 
             var battle = new Battle(attackingForce, defendingForce);
@@ -69,13 +61,11 @@ namespace tests
         public void MechInfantry_Artillery()
         {
             var attackingForce = new Force(new SimpleLossPicker());
-            attackingForce.AddUnit<MechInfantry>();
-            attackingForce.AddUnit<MechInfantry>();
+            attackingForce.AddUnit<MechInfantry>(2);
             attackingForce.AddUnit<Artillery>();
 
             var defendingForce = new Force(new SimpleLossPicker());
-            defendingForce.AddUnit<MechInfantry>();
-            defendingForce.AddUnit<MechInfantry>();
+            defendingForce.AddUnit<MechInfantry>(2);
             defendingForce.AddUnit<Artillery>();
 
             var battle = new Battle(attackingForce, defendingForce);
@@ -89,13 +79,11 @@ namespace tests
         public void Infantry_Tank()
         {
             var attackingForce = new Force(new SimpleLossPicker());
-            attackingForce.AddUnit<Infantry>();
-            attackingForce.AddUnit<Infantry>();
+            attackingForce.AddUnit<Infantry>(2);
             attackingForce.AddUnit<Tank>();
 
             var defendingForce = new Force(new SimpleLossPicker());
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>(2);
             defendingForce.AddUnit<Tank>();
 
             var battle = new Battle(attackingForce, defendingForce);
@@ -109,27 +97,22 @@ namespace tests
         public void LandBattle()
         {
             var attackingForce = new Force(new SimpleLossPicker());
-            attackingForce.AddUnit<Infantry>();
-            attackingForce.AddUnit<Infantry>();
+            attackingForce.AddUnit<Infantry>(2);
             attackingForce.AddUnit<MechInfantry>();
-            attackingForce.AddUnit<Artillery>();
-            attackingForce.AddUnit<Artillery>();
-            attackingForce.AddUnit<Tank>();
-            attackingForce.AddUnit<Tank>();
+            attackingForce.AddUnit<Artillery>(2);
+            attackingForce.AddUnit<Tank>(2);
 
             var defendingForce = new Force(new SimpleLossPicker());
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<MechInfantry>();
-            defendingForce.AddUnit<MechInfantry>();
+            defendingForce.AddUnit<Infantry>(2);
+            defendingForce.AddUnit<MechInfantry>(2);
             defendingForce.AddUnit<Artillery>();
             defendingForce.AddUnit<Tank>();
 
             var battle = new Battle(attackingForce, defendingForce);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
-            result.AttackerWinRatio.Should().BeApproximately(.756, delta);
-            result.DefenderWinRatio.Should().BeApproximately(.215, delta);
-            result.DrawRatio.Should().BeApproximately(.029, delta);
+            result.AttackerWinRatio.Should().BeApproximately(.775, delta);
+            result.DefenderWinRatio.Should().BeApproximately(.197, delta);
+            result.DrawRatio.Should().BeApproximately(.028, delta);
         }
     }
 }

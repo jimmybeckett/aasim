@@ -11,13 +11,13 @@
         public Force(Force other) => (_lossPicker, _units) 
             = (other._lossPicker, other._units.ToDictionary(entry => entry.Key, entry => entry.Value.Duplicate()));
 
-        public void AddUnit<T>() where T : Unit, new()
+        public void AddUnit<T>(int n = 1) where T : Unit, new()
         {
             if (!_units.TryGetValue(typeof(T), out var unitStack))
             {
                 _units.Add(typeof(T), unitStack = new UnitStack<T>());
             }
-            unitStack.AddUnit();
+            unitStack.AddUnit(n);
         }
 
         public int SimulateAttack(Battle context)

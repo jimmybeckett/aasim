@@ -5,7 +5,7 @@
         int NumUnits { get; set; }
         int SurplusHealth { get; set; }
         Unit WorkerUnit { get; init; }
-        void AddUnit();
+        void AddUnit(int n);
         int SimulateAttack(Battle context);
         int SimulateDefense(Battle context);
         public void ApplyHit();
@@ -18,10 +18,10 @@
         public int SurplusHealth { get; set; } = 0;
         public Unit WorkerUnit { get; init; } = new T();
 
-        public void AddUnit()
+        public void AddUnit(int n)
         {
-            NumUnits++;
-            SurplusHealth += WorkerUnit.Health - 1;
+            NumUnits += n;
+            SurplusHealth += (WorkerUnit.Health - 1) * n;
         }
 
         public int SimulateAttack(Battle context)

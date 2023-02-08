@@ -7,36 +7,22 @@ namespace aasim
         static void Main(string[] args)
         {
             var attackingForce = new Force(new SimpleLossPicker());
-            attackingForce.AddUnit<Infantry>();
-            attackingForce.AddUnit<Infantry>();
-            attackingForce.AddUnit<Infantry>();
-            attackingForce.AddUnit<Artillery>();
-            attackingForce.AddUnit<Artillery>();
-            attackingForce.AddUnit<Tank>();
-            attackingForce.AddUnit<Tank>();
-            attackingForce.AddUnit<Fighter>();
-            attackingForce.AddUnit<Fighter>();
-            attackingForce.AddUnit<TacticalBomber>();
-            attackingForce.AddUnit<StrategicBomber>();
+            attackingForce.AddUnit<Infantry>(2);
+            attackingForce.AddUnit<MechInfantry>();
+            attackingForce.AddUnit<Artillery>(2);
+            attackingForce.AddUnit<Tank>(2);
 
             var defendingForce = new Force(new SimpleLossPicker());
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>(2);
+            defendingForce.AddUnit<MechInfantry>(2);
             defendingForce.AddUnit<Artillery>();
             defendingForce.AddUnit<Tank>();
-            defendingForce.AddUnit<Fighter>();
-            defendingForce.AddUnit<TacticalBomber>();
-            defendingForce.AddUnit<TacticalBomber>();
-            defendingForce.AddUnit<StrategicBomber>();
-            defendingForce.AddUnit<StrategicBomber>();
 
             var battle = new Battle(attackingForce, defendingForce);
 
             var stopwatch = Stopwatch.StartNew();
 
-            PrintSummary(new RatioBattleSimulationSummary(Analysis.Simulate(battle, 100000)));
+            PrintSummary(new RatioBattleSimulationSummary(Analysis.Simulate(battle, 1000000)));
 
             stopwatch.Stop();
 

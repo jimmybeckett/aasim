@@ -9,13 +9,10 @@
         public void Fighters_Only()
         {
             var attackingForce = new Force(new SimpleLossPicker());
-            attackingForce.AddUnit<Fighter>();
-            attackingForce.AddUnit<Fighter>();
-            attackingForce.AddUnit<Fighter>();
+            attackingForce.AddUnit<Fighter>(3);
 
             var defendingForce = new Force(new SimpleLossPicker());
-            defendingForce.AddUnit<Fighter>();
-            defendingForce.AddUnit<Fighter>();
+            defendingForce.AddUnit<Fighter>(2);
 
             var battle = new Battle(attackingForce, defendingForce);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
@@ -28,15 +25,11 @@
         public void TacticalBomber_Tank()
         {
             var attackingForce = new Force(new SimpleLossPicker());
-            attackingForce.AddUnit<Tank>();
-            attackingForce.AddUnit<Tank>();
-            attackingForce.AddUnit<TacticalBomber>();
-            attackingForce.AddUnit<TacticalBomber>();
+            attackingForce.AddUnit<Tank>(2);
+            attackingForce.AddUnit<TacticalBomber>(2);
 
             var defendingForce = new Force(new SimpleLossPicker());
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>(3);
 
             var battle = new Battle(attackingForce, defendingForce);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
@@ -53,8 +46,7 @@
             attackingForce.AddUnit<Fighter>();
 
             var defendingForce = new Force(new SimpleLossPicker());
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>(2);
             defendingForce.AddUnit<TacticalBomber>();
 
             var battle = new Battle(attackingForce, defendingForce);
@@ -72,8 +64,7 @@
             attackingForce.AddUnit<Fighter>();
 
             var defendingForce = new Force(new SimpleLossPicker());
-            defendingForce.AddUnit<Infantry>();
-            defendingForce.AddUnit<Infantry>();
+            defendingForce.AddUnit<Infantry>(2);
             defendingForce.AddUnit<TacticalBomber>();
 
             var battle = new Battle(attackingForce, defendingForce);
@@ -87,17 +78,14 @@
         public void AirBattle()
         {
             var attackingForce = new Force(new SimpleLossPicker());
-            attackingForce.AddUnit<Fighter>();
-            attackingForce.AddUnit<Fighter>();
+            attackingForce.AddUnit<Fighter>(2);
             attackingForce.AddUnit<TacticalBomber>();
             attackingForce.AddUnit<StrategicBomber>();
 
             var defendingForce = new Force(new SimpleLossPicker());
             defendingForce.AddUnit<Fighter>();
-            defendingForce.AddUnit<TacticalBomber>();
-            defendingForce.AddUnit<TacticalBomber>();
-            defendingForce.AddUnit<StrategicBomber>();
-            defendingForce.AddUnit<StrategicBomber>();
+            defendingForce.AddUnit<TacticalBomber>(2);
+            defendingForce.AddUnit<StrategicBomber>(2);
 
             var battle = new Battle(attackingForce, defendingForce);
             var result = new RatioBattleSimulationSummary(Analysis.Simulate(battle, rounds));
