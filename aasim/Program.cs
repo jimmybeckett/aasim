@@ -7,16 +7,11 @@ namespace aasim
         static void Main(string[] args)
         {
             var attackingForce = new Force(new SimpleLossPicker());
-            attackingForce.AddUnit<Infantry>(2);
-            attackingForce.AddUnit<MechInfantry>();
-            attackingForce.AddUnit<Artillery>(2);
-            attackingForce.AddUnit<Tank>(2);
+            attackingForce.AddUnit<TacticalBomber>(4);
 
             var defendingForce = new Force(new SimpleLossPicker());
-            defendingForce.AddUnit<Infantry>(2);
-            defendingForce.AddUnit<MechInfantry>(2);
-            defendingForce.AddUnit<Artillery>();
-            defendingForce.AddUnit<Tank>();
+            defendingForce.AddUnit<AAGun>(2);
+            defendingForce.AddUnit<Fighter>(3);
 
             var battle = new Battle(attackingForce, defendingForce);
 

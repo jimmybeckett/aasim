@@ -8,6 +8,8 @@
         void AddUnit(int n);
         int SimulateAttack(Battle context);
         int SimulateDefense(Battle context);
+        int SimulatePreBattleAttack(Battle context);
+        int SimulatePreBattleDefense(Battle context);
         public void ApplyHit();
         public IUnitStack Duplicate();
     }
@@ -30,10 +32,16 @@
         public int SimulateDefense(Battle context)
             => SimulateCombat(context, WorkerUnit.Defend);
 
-        private int SimulateCombat(Battle context, Func<Battle, int, bool> simulateHit)
+        public int SimulatePreBattleAttack(Battle context)
+            => SimulateCombat(context, WorkerUnit.PreBattleAttack);
+
+        public int SimulatePreBattleDefense(Battle context)
+            => SimulateCombat(context, WorkerUnit.PreBattleDefense);
+
+        private int SimulateCombat(Battle context, Func<Battle, int, int> simulateHit)
             => Enumerable.Range(0, NumUnits)
-            .Where(i => simulateHit(context, i))
-            .Count();
+            .Select(i => simulateHit(context, i))
+            .Sum();
 
         public void ApplyHit()
         {

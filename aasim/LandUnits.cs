@@ -14,7 +14,7 @@
     {
         public Infantry() : base(1, 2, 1, 3) { }
 
-        public override bool Attack(Battle context, int i)
+        public override int Attack(Battle context, int i)
         {
             if (i < context.Attackers.Count<Artillery>())
             {
@@ -28,13 +28,33 @@
     {
         public MechInfantry() : base(1, 2, 1, 4) { }
 
-        public override bool Attack(Battle context, int i)
+        public override int Attack(Battle context, int i)
         {
             if (i < context.Attackers.Count<Artillery>())
             {
                 return SimulateD6Lte(AttackingCombatScore + 1);
             }
             return base.Attack(context, i);
+        }
+    }
+
+    public class AAGun : Unit
+    {
+        public AAGun() : base(0, 0, 1, 5) { }
+
+        private const int _maxTargets = 3;
+
+        private const int CombatScore = 1;
+
+        public override int PreBattleDefense(Battle context, int i)
+        {
+            var numEnemyPlanes = context.Attackers.Count<Fighter>()
+                + context.Attackers.Count<TacticalBomber>()
+                + context.Attackers.Count<StrategicBomber>();
+            var numViableTargets = Math.Max(numEnemyPlanes - _maxTargets * i, 0);
+            return Enumerable.Range(0, Math.Min(numViableTargets, _maxTargets))
+                .Select(_ => SimulateD6Lte(CombatScore))
+                .Sum();
         }
     }
 }

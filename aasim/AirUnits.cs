@@ -9,7 +9,7 @@
     {
         public TacticalBomber() : base(3, 3, 1, 11) { }
 
-        public override bool Attack(Battle context, int i)
+        public override int Attack(Battle context, int i)
         {
             if (i < context.Attackers.Count<Fighter>() + context.Attackers.Count<Tank>())
             {

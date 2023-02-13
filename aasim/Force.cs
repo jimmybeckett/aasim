@@ -26,8 +26,14 @@
         public int SimulateDefense(Battle context)
             => SimulateCombat(unitStack => unitStack.SimulateDefense(context));
 
-        private int SimulateCombat(Func<IUnitStack, int> simulateHit)
-            => _units.Values.Select(simulateHit).Sum();
+        public int SimulatePreBattleAttack(Battle context)
+            => SimulateCombat(unitStack => unitStack.SimulatePreBattleAttack(context));
+
+        public int SimulatePreBattleDefense(Battle context)
+            => SimulateCombat(unitStack => unitStack.SimulatePreBattleDefense(context));
+
+        private int SimulateCombat(Func<IUnitStack, int> simulateHits)
+            => _units.Values.Select(simulateHits).Sum();
 
         public bool IsDefeated() => !_units.Any();
 

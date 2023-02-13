@@ -11,14 +11,27 @@
         public Battle(Battle other)
             => (Attackers, Defenders) = (new Force(other.Attackers), new Force(other.Defenders));
 
-        public BattleResult Resolve()
+        public BattleResult Resolve(bool conductPreBattleCombat = true)
         {
-            BattleResult? result;
-            do
+            BattleResult? result = null;
+            if (conductPreBattleCombat)
+            {
+                result = ConductPreBattleCombat();
+            }
+            while (!result.HasValue)
             {
                 result = Advance();
-            } while (!result.HasValue);
+            }
             return result.Value;
+        }
+
+        public BattleResult? ConductPreBattleCombat()
+        {
+            var attackerHits = Attackers.SimulatePreBattleAttack(this);
+            var defenderHits = Defenders.SimulatePreBattleDefense(this);
+            Attackers.ApplyHits(defenderHits);
+            Defenders.ApplyHits(attackerHits);
+            return Result();
         }
 
         public BattleResult? Advance()
